@@ -11,7 +11,12 @@ public class BaseController {
 
         Pattern pattern = Pattern.compile(standard);
         Matcher matcher = pattern.matcher(qrCode);
+<<<<<<< HEAD
         conca;
+=======
+        ()
+        ()
+>>>>>>> parent of a3beca0 (baba)
         return matcher.matches();
     }
     
