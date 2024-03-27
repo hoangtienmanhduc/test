@@ -12,7 +12,7 @@ public class BaseController {
         Pattern pattern = Pattern.compile(standard);
         Matcher matcher = pattern.matcher(qrCode);
         
-        String test = "push force2";
+        String test = "push force2qưeqw";
         return matcher.matches();
     }
     
