@@ -11,18 +11,8 @@ public class BaseController {
 
         Pattern pattern = Pattern.compile(standard);
         Matcher matcher = pattern.matcher(qrCode);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        conca;
-=======
-        ()
-        ()
->>>>>>> parent of a3beca0 (baba)
-=======
-        ()
-        ()
->>>>>>> parent of a3beca0 (baba)
         return matcher.matches();
+        
     }
     
     public boolean checkFormatQRCodeV2(String qrCode) {
