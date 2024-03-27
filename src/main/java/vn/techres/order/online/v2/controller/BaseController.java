@@ -11,11 +11,6 @@ public class BaseController {
 
         Pattern pattern = Pattern.compile(standard);
         Matcher matcher = pattern.matcher(qrCode);
-<<<<<<< HEAD
-        Matcher matcher = pattern.matcher(qrCode);
-=======
-        Pattern pattern = Pattern.compile(standard);
->>>>>>> a68999ccb527b42c4de24d57701a2de55b30e00f
 
         return matcher.matches();
     }
