@@ -1,0 +1,97 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package vn.techres.microservice.grpc.java.elasticsearch.restaurant.brands;
+
+service RestaurantBrandService {
+    rpc FindById (RestaurantBrandFindByIdRequest) returns (BaseResponse) {}
+}
+
+message RestaurantBrandFindByIdRequest {
+    int32 restaurant_brand_id = 1;
+}
+
+message BaseResponse {
+    int32 status = 1;
+    string message = 2;
+    RestaurantBrandResponse data = 3;
+}
+
+message RestaurantBrandResponse {
+
+    int32 id = 1;
+    int32 restaurant_id = 2;
+    int32 service_restaurant_level_id = 3;
+    int32 service_restaurant_level_type = 4;
+    int32 service_charge_each_bill_price = 5;
+    string logo_url = 6;
+    string name = 7;
+    string description = 8;
+    string banner = 9;
+    string phone = 10;
+    int32 status = 11;
+    string website = 12;
+    string facebook_page = 13;
+    RestaurantBrandSetting setting = 14;
+    int32 is_office = 15;
+
+}
+
+message RestaurantBrandSetting {
+    int32 branch_type = 1;
+    int32 branch_type_option = 2;
+    int32 late_minute_allow_in_month = 3;
+    int32 total_monthly_off_day = 4;
+    int32 total_yearly_off_day = 5;
+    string bonus_working_day = 6;  // BigDecimal chuyển về string
+    string punish_working_day_in_minute = 7;  // BigDecimal chuyển về string
+    string punish_not_checkout = 8; // BigDecimal chuyển về string
+    float maximum_advance_salary_percent = 9;
+    int32 is_require_update_customer_slot_in_order = 10;
+    int32 hour_to_take_report = 11;
+    int32 is_allow_print_temporary_bill = 12;
+    int32 is_hide_total_amount_before_complete_bill = 13;
+    int32 is_print_bill_logo = 14;
+    int32 is_print_bill_on_mobile_app = 15;
+    int32 is_paid_user = 16;
+    int32 is_print_kichen_bill_on_mobile_app = 17;
+    int32 is_use_bar_code = 18;
+    int32 is_hide_category_type_food = 19;
+    int32 is_hide_category_type_drink = 20;
+    int32 is_hide_category_type_other = 21;
+    int32 is_hide_category_type_sea_food = 22;
+    int32 is_enable_membership_card = 23;
+    int32 is_have_take_away = 24;
+    int32 is_enable_booking = 25;
+    int32 convert_food_point_for_chef = 26;
+    int32 template_bill_printer_type = 27;
+    string minimum_order_amount_to_claim_bonus_from_booking = 28; // BigDecimal chuyển về string
+    string amount_bonus_booking_order_for_employee = 29; // BigDecimal chuyển về string
+    string amount_bonus_booking_order_for_employee_second_phase = 30; // BigDecimal chuyển về string
+    int32 maximum_bonus_count_booking_for_employee_second_phase = 31;
+    string amount_bonus_booking_order_for_employee_third_phase = 32; // BigDecimal chuyển về string
+    string service_charge_amount_on_order = 33; // BigDecimal chuyển về string
+    int32 is_open_table_and_create_order_without_add_food = 34;
+    int32 monthly_inventory_report_date = 35;
+    int32 maximum_percent_order_amount_to_accumulate_point_allow_use_in_each_bill = 36;
+    int32 maximum_accumulate_point_allow_use_in_each_bill = 37;
+    int32 maximum_percent_order_amount_to_promotion_point_allow_use_in_each_bill = 38;
+    int32 maximum_promotion_point_allow_use_in_each_bill = 39;
+    int32 maximum_percent_order_amount_to_alo_point_allow_use_in_each_bill = 40;
+    string maximum_money_by_alo_point_allow_use_in_each_bill = 41; // BigDecimal chuyển về string
+    int32 one_food_review_to_point_in_bill_exchange = 42;
+    string zalo_oaid = 43;
+    string esms_api_key = 44;
+    string esms_secret_key = 45;
+    string template_id = 46;
+    int32 is_enable_sub_monitor = 47;
+    string sub_monitor_acknowledgements = 48;
+    int32 is_customer_order = 49;
+    int32 service_charge_percent = 50;
+    string service_charge_amount = 51;
+    int32 service_charge_use_type = 52;
+    int32 is_online_order = 53;
+    int32 payment_type = 54;
+}
+
+	

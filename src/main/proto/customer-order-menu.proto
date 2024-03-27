@@ -1,0 +1,166 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package vn.techres.microservice.grpc.java.elasticsearch.customer_order_menu;
+
+service CustomerOrderMenuService {
+  rpc getCustomerOrderMenu(CustomerOrderMenuRequest) returns (BaseListGRPCResponse) {}
+  rpc getCustomerOrderMenuByFoodId(CustomerOrderMenuByFoodIdRequest) returns (BaseGRPCResponse) {}
+  rpc getCustomerOrderMenuByFoodIds(CustomerOrderMenuByFoodIdsRequest) returns (BaseListGRPCCustomerOrderMenuResponse) {}
+}
+
+message CustomerOrderMenuRequest {
+  int32 restaurant_id = 1;
+  int32 restaurant_brand_id = 2;
+  int32 branch_id = 3;
+  int32 area_id = 4;
+  int32 category_type = 6;
+  int32 limit = 12;
+  int32 page = 13;
+  string key_search = 14;
+}
+
+message CustomerOrderMenuByFoodIdRequest {
+  int32 restaurant_id = 1;
+  int32 restaurant_brand_id = 2;
+  int32 branch_id = 3;
+  int32 area_id = 4;
+  int32 food_id = 5;
+}
+
+message CustomerOrderMenuByFoodIdsRequest {
+  int32 restaurant_id = 1;
+  int32 restaurant_brand_id = 2;
+  int32 branch_id = 3;
+  int32 area_id = 4;
+  repeated int32 food_id = 5;
+}
+
+
+
+message BaseGRPCResponse {
+  int32 status = 1;
+  string message = 2;
+  CustomerOrderMenuResponse data = 3;
+}
+
+
+
+message BaseListGRPCResponse {
+  int32 status = 1;
+  string message = 2;
+  CustomerOrderMenuListResponses data = 3;
+}
+
+message CustomerOrderMenuListResponses {
+  repeated CustomerOrderMenuResponse list = 1;
+  int32 limit = 2;
+  int32 total_record = 3;
+}
+
+message BaseListGRPCCustomerOrderMenuResponse {
+  int32 status = 1;
+  string message = 2;
+  repeated FoodMenuResponse data = 3;
+}
+
+
+message CustomerOrderMenuResponse {
+  int32 id = 1;
+  int32 restaurant_id = 2;
+  int32 restaurant_brand_id = 3;
+  int32 branch_id = 4;
+  int32 restaurant_kitchen_place_id = 5;
+  int32 restaurant_vat_config_id = 6;
+  int32 category_id = 7;
+  string category_name = 8;
+  int32 category_type = 9;
+  float vat_percent = 10;
+  repeated int32 food_addition_ids = 11;
+  string avatar = 12;
+  string avatar_thump = 13;
+  string code = 14;
+  string prefix = 15;
+  string name = 16;
+  string normalize_name = 17;
+  string description = 18;
+  double original_price = 19;
+  double price = 20;
+  int32 point_to_purchase = 21;
+  string unit_type = 22;
+  int32 is_addition = 23;
+  int32 is_addition_like_food = 24;
+  int32 time_to_completed = 25;
+  int32 is_special_claim_point = 26;
+  int32 is_sell_by_weight = 27;
+  int32 is_allow_review = 28;
+  int32 is_allow_print = 29;
+  int32 is_allow_print_fishbowl = 30;
+  int32 is_allow_purchase_by_point = 31;
+  int32 is_take_away = 32;
+  int32 is_best_seller = 33;
+  int32 is_combo = 34;
+  int32 is_goods = 35;
+  int32 is_allow_employee_gift = 36;
+  int32 sale_online_status = 37;
+  int32 status = 38;
+  int32 is_deleted = 39;
+  int32 temporary_percent = 40;
+  string temporary_price_from_date = 41;
+  string temporary_price_to_date = 42;
+  double temporary_price = 43;
+  int32 is_allow_booking = 44;
+  int32 is_allow_completed_and_approved_for_drink = 45;
+  int32 is_allow_print_stamp = 46;
+  double price_with_temporary = 49;
+  repeated AdditionFoodResponse addition_foods = 50;
+  repeated FoodMenuFoodInComboResponse food_in_combo = 51;
+  repeated int32 combo_food_ids = 53;
+  int32 is_out_stock = 54;
+  repeated FoodNoteResponse food_notes = 55;
+}
+
+message FoodNoteResponse {
+  int32 id = 1;
+  string note = 2;
+}
+
+message AdditionFoodResponse {
+  int32 id = 1;
+  string name = 2;
+  double price = 3;
+  double temporary_price = 4;
+  double price_with_temporary = 5;
+  float vat_percent = 6;
+  string avatar = 7;
+  string unit_type = 8;
+  int32 is_out_stock = 9;
+}
+
+message FoodMenuFoodInComboResponse {
+  int32 id = 1;
+  string name = 2;
+  string avatar = 3;
+  double price = 4;
+  float combo_quantity = 5;
+  int32 is_out_stock = 6;
+}
+
+
+message FoodMenuResponse {
+  int32 id = 1;
+  int32 restaurant_id = 2;
+  int32 restaurant_brand_id = 3;
+  int32 branch_id = 4;
+  string food_addition_ids = 11;
+  string name = 16;
+  double price = 20;
+  int32 is_addition = 23;
+  int32 is_addition_like_food = 24;
+  int32 is_combo = 34;
+  double price_with_temporary = 49;
+  string food_in_combo = 51;
+  string food_in_addition = 52;
+}
+

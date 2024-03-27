@@ -1,0 +1,144 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package vn.techres.microservice.grpc.java.customer_order_online.order_online_aloline;
+
+service OrderOnlineAlolineService {
+
+    // find one
+    rpc findOrderOnlineById(OrderOnlineFindOneRequest) returns (BaseGRPCResponse){};
+
+    // get list
+    rpc getOrderOnlineByCustomerIdAndStatus(OrderOnlineRequest) returns (BaseListGRPCResponse) {};
+
+    // create
+    rpc createOrderOnlineAloline(OrderOnlineCreateRequest) returns (BaseGRPCResponse){};
+
+    // update status
+    rpc cancelOrderOnlineAloline(OrderOnlineCancelRequest) returns (BaseGRPCResponse){};
+
+    // delete status
+    rpc deleteOrderOnlineAloline(OrderOnlineDeleteRequest) returns (BaseGRPCResponse){};
+
+    // change status
+    rpc changeStatusOrderOnlineAloline(OrderOnlineCancelRequest) returns (BaseGRPCResponse){};
+
+}
+
+message OrderOnlineFindOneRequest {
+  int32 customer_order_id = 1;
+}
+
+
+message OrderOnlineCancelRequest {
+  int32 restaurant_id = 1;
+  int32 restaurant_brand_id = 2;
+  int32 branch_id = 3;
+  int32 customer_order_id = 4;
+  int32 customer_id = 5;
+}
+
+message OrderOnlineDeleteRequest {
+  repeated int32 customer_order_ids = 1;
+}
+
+
+message OrderOnlineRequest{
+  int32 restaurant_id = 1;
+  int32 restaurant_brand_id = 2;
+  int32 branch_id = 4;
+  int32 customer_id = 5;
+  string customer_order_status = 6;
+  int32 limit = 7;
+  int32 page = 8;
+}
+
+
+message OrderOnlineCreateRequest {
+  int32 restaurant_id = 1;
+  int32 restaurant_brand_id = 2;
+  int32 branch_id = 3;
+  int32 customer_id = 4;
+  string customer_name = 5;
+  string phone = 6;
+  string address = 7;
+  string note = 8;
+  repeated FoodRequest foods = 9;
+  int32 customer_order_status = 10;
+}
+
+
+message FoodRequest {
+  int32 id = 1;
+  string quantity = 2;
+  string note = 3;
+  repeated AdditionFoodRequest addition_foods = 4;
+}
+
+message AdditionFoodRequest {
+  int32 id = 1;
+  string quantity = 2;
+  string note = 3;
+}
+
+message BaseGRPCResponse {
+  int32 status = 1;
+  string message = 2;
+  CustomerOrderOnlineResponse data = 3;
+}
+
+message BaseListGRPCResponse {
+  int32 status = 1;
+  string message = 2;
+  int32 total_record = 3;
+  int32 limit = 4;
+  repeated CustomerOrderOnlineResponse customer_order_online = 5;
+}
+
+message CustomerOrderOnlineResponse {
+  int32 id = 1;
+  int32 restaurant_id = 2;
+  int32 restaurant_brand_id = 3;
+  int32 branch_id = 4;
+  int32 order_id = 5;
+  int32 customer_id = 6;
+  string customer_name = 7;
+  string customer_phone = 8;
+  string customer_address = 9;
+  string total_amount = 10;
+  int32  payment_method = 11;
+  int32  payment_status = 12;
+  int32  customer_order_status = 13;
+  string note = 14;
+  string created_at = 15;
+  string updated_at = 16;
+  repeated  CustomerOrderOnlineDetailResponse customer_order_details = 17;
+  int32  food_count = 18;
+}
+
+message CustomerOrderOnlineDetailResponse {
+  int64  id = 1;
+  int32  customer_order_id = 2;
+  int32  food_id = 3;
+  string food_name = 4;
+  int32  order_detail_parent_id = 5;
+  int32  order_detail_combo_parent_id = 6;
+  string customer_order_detail_addition_ids = 7;
+  string customer_order_detail_combo_ids = 8;
+  string quantity = 9;
+  string price = 10;
+  string total_price = 11;
+  int32  is_addition = 12;
+  int32  is_combo = 13;
+  string note = 14;
+  string created_at = 15;
+  string updated_at = 16;
+  repeated FoodInAdditionResponse customer_order_detail_addition = 17;
+  repeated FoodInAdditionResponse customer_order_detail_combo = 18;
+}
+
+message FoodInAdditionResponse {
+  int64 id = 1;
+  string name = 2;
+  string quantity =3;
+}

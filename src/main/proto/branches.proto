@@ -1,0 +1,135 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package vn.techres.microservice.grpc.java.elasticsearch.branches;
+
+service BranchService {
+    rpc FindById (BranchFindByIdRequest) returns (BaseResponse) {}
+    rpc SpGetListRestaurantResourceListBranchForEmployee (BranchResourcePrivilegeForEmployeeRequest) returns (BaseListResponse) {}
+    rpc FindByRestaurantBrand (BranchFindByRestaurantBrandRequest) returns (BaseListResponse) {}
+}
+ 
+message BranchFindByIdRequest {
+    int32 branch_id = 1;
+}
+
+message BaseResponse {
+    int32 status = 1;
+    string message = 2;
+    BranchResponse data = 3;
+}
+
+message BaseListResponse {
+    int32 status = 1;
+    string message = 2;
+    repeated BranchResponse data = 3;
+}
+
+message BranchResponse {
+	int32 id = 1;
+    int32 restaurant_id = 2;
+    int32 restaurant_brand_id = 3;
+    int32 employee_manager_id = 4;
+    int32 branch_business_type_id = 5;
+    string address_note = 6;
+	float discount_percent = 7;
+    int32 country_id = 8;
+    string country_name = 9;
+    int32 city_id = 10;
+    string city_name = 11;
+	int32 district_id = 12;
+    string district_name = 13;
+    int32 ward_id = 14;
+    string ward_name = 15;
+    string lat = 16;
+	string lng = 17;
+    string name = 18;
+    string phone_number = 19;
+    int32 status = 20;
+    int32 enable_checkin = 21;
+	string qr_code_checkin = 22;
+    string street_name = 23;
+    string address_full_text = 24;
+    string image_logo_url = 25;
+    string banner_image_url = 26;
+	string banner_name = 27;
+    string wifi_name = 28;
+    string wifi_password = 29;
+    float banner_promotion_percent = 30;
+    float banner_promotion_price = 31;
+	int32 is_have_wifi = 32;
+    int32 is_free_parking = 33;
+    int32 is_have_air_conditioner = 34;
+    int32 is_have_card_payment = 35;
+    int32 is_have_booking_online = 36;
+	int32 is_have_order_food_online = 37;
+    int32 is_have_shipping = 38;
+    int32 is_have_car_parking = 39;
+    int32 is_have_private_room = 40;
+    int32 is_have_outdoor = 41;
+	int32 is_have_child_corner = 42;
+    int32 is_have_live_music = 43;
+    int32 is_have_karaoke = 44;
+    int32 is_have_invoice = 45;
+ 	string other_informations = 46;
+	int32 total_customer_reviewed = 47;
+    int32 branch_office_id = 48;
+    string average_amount_per_customer = 49;  // BigDecimal chuyển về string
+    int32 is_public = 50;
+    int32 is_office = 51;
+	int32 is_working_offline = 52;
+    string history_log = 53;
+    string license_expired_at = 54;  
+    string last_switch_online_mode = 55;
+    BranchSetting setting = 56;
+    repeated string image_urls = 57;
+	BranchRateDetail rate_detail = 58;
+    int32 no_of_review = 59;
+    repeated BranchServeTime serve_time = 60;  
+    int32 is_windows_application_server_online = 61;
+		
+}
+
+message BranchSetting {
+    int32 is_allow_advert = 1;
+    int32 is_working_offline = 2;
+    int32 is_enable_booking = 3;
+    int32 is_have_take_away = 4;
+    int32 is_enable_fish_bowl = 5;
+    int32 is_enable_STAMP = 6;
+    int32 is_enable_checkin = 7;
+    int32 is_wireless_call_system = 8;
+    int32 wireless_call_system_total = 9;
+}
+
+message BranchRateDetail {
+    int32 rate_count = 1;
+    float average_rate = 2;
+    float service_rate = 3;
+    float food_rate = 4;
+    float price_rate = 5;
+    float space_rate = 6;
+    float hygiene_rate = 7;
+}
+
+message BranchServeTime {
+    int32 day_of_week = 1;
+    string open_time = 2;
+    string close_time = 3;
+}
+
+// Response lấy danh sách những chi nhánh có quyền 
+message BranchResourcePrivilegeForEmployeeRequest {
+    int32 restaurant_id = 1;
+    int32 restaurant_brand_id = 2;
+    string branch_ids = 3;
+    int32 employee_id = 4;
+}
+
+// Response lấy danh sách chi nhánh 
+message BranchFindByRestaurantBrandRequest {
+    int32 restaurant_id = 1;
+    int32 restaurant_brand_id = 2;
+    int32 status = 3;
+}
+

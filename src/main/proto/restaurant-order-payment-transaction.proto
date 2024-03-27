@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package vn.techres.microservice.grpc.java.order.restaurant_order_payment_transaction;
+
+service RestaurantOrderPaymentTransactionGrpcService {
+    rpc getQR (GetQrRequest) returns (GetQrBaseResponse) {}
+}
+
+
+message GetQrRequest {
+	int32 restaurant_id = 1;
+    int32 restaurant_brand_id = 2;
+    string amount = 3;
+    int32 restaurant_transaction_id = 4;
+  
+}
+
+message GetQrBaseResponse {
+    int32 status = 1;
+    string message = 2;
+    GetQrResponse data = 3;
+}
+
+
+message GetQrResponse {
+   
+    string qr_code = 4;
+    string trans_id = 5;
+    string payment_url = 6;
+    string expired_at = 7;
+    int32 expired_time = 8;
+    string status = 9;
+}
+
