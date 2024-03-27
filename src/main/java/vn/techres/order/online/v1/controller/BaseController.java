@@ -11,6 +11,7 @@ public class BaseController {
 
         Pattern pattern = Pattern.compile(standard);
         Matcher matcher = pattern.matcher(qrCode);
+        Matcher matcher = pattern.matcher(qrCode);
 
         return matcher.matches();
     }
