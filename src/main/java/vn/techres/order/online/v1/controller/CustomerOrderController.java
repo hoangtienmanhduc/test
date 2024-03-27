@@ -53,7 +53,7 @@ import vn.techres.order.online.v1.version.VersionService;
 public class CustomerOrderController extends BaseController {
 
 	@GrpcClient("java_elasticsearch")
-	private RestaurantServiceGrpc.RestaurantServiceBlockingStub restaurantServiceBlockingStub;
+	private RestaurantServiceGrpc.RestaurantServiceBlockingStub restaurantServiceBlockingStubtas;
 
 	@GrpcClient("java_elasticsearch")
 	private TableServiceGrpc.TableServiceBlockingStub tableServiceBlockingStub;
