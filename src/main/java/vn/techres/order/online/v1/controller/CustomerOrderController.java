@@ -67,6 +67,12 @@ public class CustomerOrderController extends BaseController {
 	@GrpcClient("java_elasticsearch")
 	private CustomerOrderMenuServiceGrpc.CustomerOrderMenuServiceBlockingStub customerOrderMenuServiceBlockingStub;
 
+	@Autowired
+	private CustomerOrderService2 customerOrderService2;
+
+	@Autowired
+	private CustomerOrderDetailService2 customerOrderDetailService2;
+
 	@Operation(summary = "API quét mã QR code", description = " ")
 	@PostMapping(value = "/qr-code", consumes = { MediaType.ALL_VALUE }, produces = {
 			MediaType.APPLICATION_JSON_VALUE })
