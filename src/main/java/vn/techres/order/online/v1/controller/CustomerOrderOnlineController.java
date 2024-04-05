@@ -424,6 +424,8 @@ public class CustomerOrderOnlineController extends BaseController {
 
 		String[] code = qrCode.split("_");
 
+		String[] code2 = qrCode.split("_");
+
 		String[] qrCodeSplit = code[1].split(":");
 
 		if (qrCodeSplit.length != 1) {
