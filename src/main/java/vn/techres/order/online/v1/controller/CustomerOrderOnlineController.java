@@ -420,21 +420,4 @@ public class CustomerOrderOnlineController extends BaseController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
-	public OnlineOrderQRCodeJson validateQRCode(String qrCode) throws TechResHttpException {
-
-		String[] code = qrCode.split("_");
-
-		String[] qrCodeSplit = code[1].split(":");
-
-		if (qrCodeSplit.length != 1) {
-			throw new TechResHttpException(HttpStatus.UNAUTHORIZED, "Mã QR code không hợp lệ!");
-
-		}
-
-		int restaurantId = Integer.parseInt(qrCodeSplit[0]);
-
-		return new OnlineOrderQRCodeJson(restaurantId);
-
-	}
-
 }
