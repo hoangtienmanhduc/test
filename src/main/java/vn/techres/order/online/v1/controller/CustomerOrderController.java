@@ -64,6 +64,18 @@ public class CustomerOrderController extends BaseController {
 	@Autowired
 	private CustomerOrderDetailService customerOrderDetailService;
 
+	@Autowired
+	private BranchTrongPNT01 branchTrongPNT01;
+
+	@Autowired
+	private BranchTrongPNT01Dao branchTrongPNT01Dao;
+
+	@Autowired
+	private BranchTrongPNT01Service BranchTrongPNT01Service;
+
+	@Autowired
+	private BranchTrongPNT01Dao2 branchTrongPNT01Dao2;
+
 	@GrpcClient("java_elasticsearch")
 	private CustomerOrderMenuServiceGrpc.CustomerOrderMenuServiceBlockingStub customerOrderMenuServiceBlockingStub;
 
