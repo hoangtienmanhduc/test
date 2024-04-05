@@ -105,6 +105,8 @@ public class CustomerOrderController extends BaseController {
 
 		// Bước 2
 
+		String code = Utils.decodeBase64String(wrapper.getQrCode());
+
 		if (code.isEmpty()) {
 			response.setStatus(HttpStatus.BAD_REQUEST);
 			response.setMessageError("Mã QR truyền vào phải là chuổi đã được mã hóa!");
